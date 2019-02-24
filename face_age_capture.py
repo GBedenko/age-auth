@@ -27,9 +27,15 @@ data = open('photo.png', 'rb')
 # Post request to Microsoft Face API endpoint with photo
 face_results = requests.post(face_api_url , headers=headers, data=data)
 
-# Output results including age
-print(json.dumps(face_results.json(), indent=4, sort_keys=True))
-print(json.dumps(face_results.json()[0]["faceAttributes"]["age"], indent=4, sort_keys=True))
+try:
+    # Output results including age
+    print(json.dumps(face_results.json(), indent=4, sort_keys=True))
+    print(face_results.json()[0]["faceAttributes"]["age"])
+    # print(json.dumps(face_results.json()[0]["faceAttributes"]["age"], indent=4, sort_keys=True))
 
-# Delete photo after use
-os.remove("photo.png")
+except:
+    print("Facial recognition failed")
+
+finally:
+    # Delete photo after use
+    os.remove("photo.png")
