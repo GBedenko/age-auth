@@ -24,6 +24,14 @@ def capture_photo(path='photo.png'):
     cv2.imwrite(path, frame)
 
 
+def crop_photo(path='photo.png'):
+    # TODO - using viola jones algorithm, crop the captured photo to just the face
+
+
+def age_prediction(path='photo.png'):
+    # TODO - once finalised age predictor I develop is ready
+
+
 def placeholder_age_prediction(path='photo.png'):
     """Temporary Age Predictor placholder.
        Calls Microsoft Face API to determine the age according to the passed photo file path
