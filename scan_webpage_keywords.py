@@ -5,7 +5,7 @@ import requests
 import re as regex
 
 def contains_keyword(regex_string, webpage_url):
-    """This class docstring shows how to use sphinx and rst syntax
+    """Checks whether a regex is contained within the content on a webpage
 
         :param regex_string: Regular Expression string to run over the webpage url's content
         :param webpage_url: URL for the webpage to scan, must include http:// or https:// prefix"""
