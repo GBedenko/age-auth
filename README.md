@@ -1,4 +1,4 @@
-# 303COM-Age-Verification-via-Facial-Recognition-Plugin
+# 303COM-Age-Verification-via-Facial-Recognition-App
 
 Application to offer two main interfaces:
 
