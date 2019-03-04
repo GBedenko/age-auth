@@ -46,7 +46,7 @@ def confirm_age():
        Returns age of the user predicted by age verification software"""
 
     # Call functionality which takes photo of user and calculates their age via facial recognition
-    user_age = face_age_capture.get_user_age
+    user_age = face_age_capture.get_user_age()
 
     # Return the age as the response
     return str(user_age)

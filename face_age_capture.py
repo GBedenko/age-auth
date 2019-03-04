@@ -26,10 +26,12 @@ def capture_photo(path='photo.png'):
 
 def crop_photo(path='photo.png'):
     # TODO - using viola jones algorithm, crop the captured photo to just the face
+    return None
 
 
 def age_prediction(path='photo.png'):
     # TODO - once finalised age predictor I develop is ready
+    return None
 
 
 def placeholder_age_prediction(path='photo.png'):
