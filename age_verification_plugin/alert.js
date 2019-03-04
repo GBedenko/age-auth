@@ -1,1 +1,0 @@
-chrome.runtime.sendMessage("Please wait whilst we verify your age");
