@@ -67,6 +67,8 @@ def confirm_age():
 # GET request for static html page explaining redirect
 @app.route("/redirect_page")
 def redirect_page():
+    """Endpoint for static html page explaining why user was redirected"""
+
     # Return html page, no templating actually used here
     return render_template('redirect_page.html')
 

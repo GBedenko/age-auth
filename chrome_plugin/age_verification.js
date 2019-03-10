@@ -1,3 +1,5 @@
+// Main script of the Chrome extension, is run everytime the user navigates to a new webpage
+
 // Regex of keywords to scan for
 regex = "vodka|whiskey|whisky|lager|cider|skyrim"
 
