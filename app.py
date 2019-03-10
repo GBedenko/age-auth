@@ -6,6 +6,7 @@ from flask import Flask, request
 # Import modules for functionality
 import scan_webpage_keywords
 import face_age_capture
+import json
 
 # Create a Flask app to run as a web server to host local API
 app = Flask(__name__)
@@ -32,8 +33,14 @@ def scan():
         # Call functionality to verify if regex is contained in webpage
         scan_result = scan_webpage_keywords.contains_keyword(regex, url)
         
-        # Return boolean result as a string
-        return str(scan_result)
+        # Save scan result as a dictionary
+        scan_data = {"age_restricted": scan_result}
+
+        # Convert to a json object which will be returned
+        scan_json = json.dumps(scan_data)
+
+        # Return boolean result as json object
+        return scan_json
 
     except:
         # If fails, return error message
@@ -53,4 +60,5 @@ def confirm_age():
 
 if __name__ == "__main__":
     # Run app on localhost:8080 for testing purposes
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    app.run(debug=True, host="localhost", port=8081)
+

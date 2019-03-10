@@ -16,8 +16,10 @@ def contains_keyword(regex_string, webpage_url):
     # Save just the response body
     request_html = request.content
 
+    regex_compiled = regex.compile(regex_string, regex.IGNORECASE)
+
     # Execute the regex on the webpage response body
-    regex_result = regex.search(regex_string, request_html)
+    regex_result = regex.search(regex_compiled, request_html)
 
     # If the regex is in the content, return true
     if(regex_result):
