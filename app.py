@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Import Flask to host server
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 # Import modules for functionality
 import scan_webpage_keywords
@@ -10,6 +10,7 @@ import json
 
 # Create a Flask app to run as a web server to host local API
 app = Flask(__name__)
+
 
 # GET request for retrieving scan result
 @app.route("/scan")
@@ -46,6 +47,7 @@ def scan():
         # If fails, return error message
         return "Unable to scan webpage url provided"
 
+
 # GET request for verifying user's age via a captured photo
 @app.route("/confirm_age")
 def confirm_age():
@@ -55,8 +57,18 @@ def confirm_age():
     # Call functionality which takes photo of user and calculates their age via facial recognition
     user_age = face_age_capture.get_user_age()
 
-    # Return the age as the response
-    return str(user_age)
+    # Save age as dictionary
+    age_data = {"age": user_age}
+
+    # Return the age as json
+    return json.dumps(age_data)
+
+
+# GET request for static html page explaining redirect
+@app.route("/redirect_page")
+def redirect_page():
+    # Return html page, no templating actually used here
+    return render_template('redirect_page.html')
 
 if __name__ == "__main__":
     # Run app on localhost:8080 for testing purposes
