@@ -25,8 +25,10 @@ def capture_photo(path='photo.png'):
 
 
 def crop_photo(path='photo.png'):
-    # TODO - using viola jones algorithm, crop the captured photo to just the face
-    return None
+    # Crops captured photo using existing library based on viola jones algorithm
+    # Modifies the captured photo to just the face of the user
+
+    os.system("autocrop --no-confirm")
 
 
 def age_prediction(path='photo.png'):
@@ -74,6 +76,7 @@ def get_user_age():
 
     # Take photo of the user
     capture_photo()
+    crop_photo()
 
     try:
 
@@ -90,3 +93,6 @@ def get_user_age():
     finally:
         # Delete photo after use, always run so the data is immediately deleted
         delete_captured_photo()
+
+if __name__ == "__main__":
+    get_user_age()
