@@ -15,14 +15,10 @@
     "permissions": [
         "tabs"
     ],
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],
-            "js": ["alert.js"]
+            "js": ["age_verification.js"]
         }
     ]
 }

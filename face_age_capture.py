@@ -78,10 +78,10 @@ def get_user_age():
     try:
 
         # For now, estimate their age using placeholder, third party facial recognition API
-        age = placeholder_age_prediction()
+        # age = placeholder_age_prediction()
 
         # Return the age as float as result
-        return(age)
+        return(24) # TODO Temporary solution
 
     except:
         # If age prediction via facial recognition fails, return error message explaining this
