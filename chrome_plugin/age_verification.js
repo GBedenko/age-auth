@@ -7,7 +7,7 @@ regex = "vodka|whiskey|whisky|lager|cider|skyrim"
 let current_url = window.location.toString().split('&', 1)
 
 // Request local API to confirm if this webpage contains age restricted keywords
-let scan_request = 'http://localhost:8081/scan?url=' + current_url + '&regex=' + regex
+let scan_request = 'http://localhost:8080/scan?url=' + current_url + '&regex=' + regex
 
 // Parse the result JSON from the request's response
 let scan_json_response = JSON.parse(httpGet(scan_request))
@@ -25,7 +25,7 @@ if (isAgeRestricted) {
     if(confirmation) {
         
         // Send a request to obtain age of the user
-        let age_request = 'http://localhost:8081/confirm_age'
+        let age_request = 'http://localhost:8080/confirm_age'
     
         // Parse the result of the age request
         let age_json_response = JSON.parse(httpGet(age_request))
@@ -33,15 +33,16 @@ if (isAgeRestricted) {
         if(age_json_response.age >= 18) {
             // If 18 or over, confirm they passed age verification
             alert('Facial Recognition determines you are ' + age_json_response.age + ' years old. Please continue browsing.')
+            
         } else {
             // If under 18, redirect user to an information page
-            window.location = "http://localhost:8081/redirect_page";
+            window.location = "http://localhost:8080/redirect_page";
         }
         
     } else {
 
         // If user refuses age verification, redirect user to an information page
-        window.location = "http://localhost:8081/redirect_page";
+        window.location = "http://localhost:8080/redirect_page";
     }
 }
 

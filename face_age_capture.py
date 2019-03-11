@@ -28,12 +28,17 @@ def crop_photo(path='photo.png'):
     # Crops captured photo using existing library based on viola jones algorithm
     # Modifies the captured photo to just the face of the user
 
+    # Command line tool for face crop python library
     os.system("autocrop --no-confirm")
 
 
-def age_prediction(path='photo.png'):
-    # TODO - once finalised age predictor I develop is ready
-    return None
+def age_prediction():
+    
+    age_response = requests.get('http://localhost:8081/determine_age')
+
+    age_json = age_response.json()
+    
+    return age_json["predicted_age"]
 
 
 def placeholder_age_prediction(path='photo.png'):
@@ -76,15 +81,17 @@ def get_user_age():
 
     # Take photo of the user
     capture_photo()
+
+    # Crop photo to just user's face
     crop_photo()
 
     try:
 
         # For now, estimate their age using placeholder, third party facial recognition API
-        # age = placeholder_age_prediction()
-
+        age = age_prediction()
+        
         # Return the age as float as result
-        return(24) # TODO Temporary solution
+        return(age)
 
     except:
         # If age prediction via facial recognition fails, return error message explaining this
@@ -96,3 +103,4 @@ def get_user_age():
 
 if __name__ == "__main__":
     get_user_age()
+
