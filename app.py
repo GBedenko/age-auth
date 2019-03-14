@@ -74,5 +74,5 @@ def redirect_page():
 
 if __name__ == "__main__":
     # Run app on localhost:8080 for testing purposes
-    app.run(debug=True, host="localhost", port=8081)
+    app.run(debug=True, host="localhost", port=8080)
 
