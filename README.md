@@ -1,6 +1,6 @@
 # 303COM-Age-Verification-via-Facial-Recognition-App
 
-Application to offer two main interfaces:
+AgeAuth - Application to offer two main interfaces:
 
 * Scan a webpage using a Regular Expression to see if keywords appear at the provided URl
 

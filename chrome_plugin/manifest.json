@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "version": "1.0",
-    "name": "Age Verification Plugin by Genaro Bedenko",
+    "name": "AgeAuth - Age Verification Plugin by Genaro Bedenko",
     "description": "Enforces age verification via facial recognition on webpages containing age-restricted content/purchases",
     "browser_action": {
         "default_icon": "img/face_icon.png",
