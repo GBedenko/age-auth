@@ -7,6 +7,7 @@ from flask import Flask, request, render_template
 import scan_webpage_keywords
 import face_age_capture
 import json
+import time
 
 # Create a Flask app to run as a web server to host local API
 app = Flask(__name__)
@@ -54,11 +55,24 @@ def confirm_age():
     """Endpoint for requesting to capture photo of user and estimate their age
        Returns age of the user predicted by age verification software"""
 
+    # Timestamp before calculating age of user
+    start_time = time.time()
+
     # Call functionality which takes photo of user and calculates their age via facial recognition
     user_age = face_age_capture.get_user_age()
 
     # Save age as dictionary
     age_data = {"age": user_age}
+
+    # Timestamp after age of user determined
+    end_time = time.time()
+
+    # Time duration to determine the user's age
+    time_taken = end_time - start_time
+
+    # Append time taken to log file
+    with open("time_taken.txt", "a") as timings:
+        timings.write(str(time_taken) + "\n")
 
     # Return the age as json
     return json.dumps(age_data)
