@@ -50,7 +50,7 @@ def placeholder_age_prediction(path='photo.png'):
 
     # Microsoft Face API credentials required to authenticate request
     headers = {'Content-Type': 'application/octet-stream',
-                        'Ocp-Apim-Subscription-Key': '871f68c8051e49b8b01435be2dd1fa35'}
+                        'Ocp-Apim-Subscription-Key': '9b3fa5306b4a446c94275c07df64da74'}
 
     # Face API endpoint to request age
     face_api_url = 'https://uksouth.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age'
@@ -88,7 +88,11 @@ def get_user_age():
     try:
 
         # For now, estimate their age using placeholder, third party facial recognition API
-        age = age_prediction()
+        cnn_age = age_prediction()
+        
+        microsoft_age = placeholder_age_prediction()
+
+        age = (cnn_age + microsoft_age) / 2
         
         # Return the age as float as result
         return(age)
