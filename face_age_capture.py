@@ -32,6 +32,16 @@ def crop_photo(path='photo.png'):
     os.system("autocrop --no-confirm")
 
 
+def resize_photo(path='photo.png'):
+    # Resizes the photo to 224x224 pixels so that the CNN can understand it
+
+    img_array = cv2.imread(path)
+    
+    resized_image = cv2.resize(img_array, (224, 224)) 
+
+    cv2.imwrite('photo.png', resized_image)
+    
+
 def age_prediction():
     
     age_response = requests.get('http://localhost:8081/determine_age')
@@ -85,17 +95,15 @@ def get_user_age():
     # Crop photo to just user's face
     crop_photo()
 
+    resize_photo()
+
     try:
 
         # For now, estimate their age using placeholder, third party facial recognition API
         cnn_age = age_prediction()
         
-        microsoft_age = placeholder_age_prediction()
-
-        age = (cnn_age + microsoft_age) / 2
-        
         # Return the age as float as result
-        return(age)
+        return(cnn_age)
 
     except:
         # If age prediction via facial recognition fails, return error message explaining this
