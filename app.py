@@ -34,15 +34,12 @@ def scan():
     try:
         # Call functionality to verify if regex is contained in webpage
         scan_result = scan_webpage_keywords.contains_keyword(regex, url)
-        
-        # Save scan result as a dictionary
-        scan_data = {"age_restricted": scan_result}
 
         # Convert to a json object which will be returned
-        scan_json = json.dumps(scan_data)
+        scan_json = json.dumps({'age_restricted': scan_result})
 
         # Return boolean result as json object
-        return scan_json
+        return str(scan_result)
 
     except:
         # If fails, return error message
@@ -75,7 +72,7 @@ def confirm_age():
         timings.write(str(time_taken) + "\n")
 
     # Return the age as json
-    return json.dumps(age_data)
+    return str(user_age)
 
 
 # GET request for static html page explaining redirect
