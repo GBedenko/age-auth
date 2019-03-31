@@ -2,6 +2,7 @@
 
 # Import libraries required for photo capture, file processing, etc.
 import cv2
+from cv2 import imread, resize
 import requests
 import json
 import os
@@ -30,6 +31,16 @@ def crop_photo(path='photo.png'):
 
     # Command line tool for face crop python library
     os.system("autocrop --no-confirm")
+
+
+def resize_photo(path='photo.png'):
+    # Resizes the photo to 224x224 pixels so that the CNN can understand it
+
+    img_array = cv2.imread(path)
+    
+    resized_image = cv2.resize(img_array, (224, 224)) 
+
+    cv2.imwrite('photo.png', resized_image)
 
 
 def age_prediction():
@@ -85,13 +96,17 @@ def get_user_age():
     # Crop photo to just user's face
     crop_photo()
 
+    resize_photo()
+
     try:
 
-        # For now, estimate their age using placeholder, third party facial recognition API
+        # Retrieve predicted age from developed CNN
         cnn_age = age_prediction()
         
+        # Retrieve predicted age from Face API
         microsoft_age = placeholder_age_prediction()
 
+        # Use average of the predictors
         age = (cnn_age + microsoft_age) / 2
         
         # Return the age as float as result
