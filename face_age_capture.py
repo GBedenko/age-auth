@@ -102,15 +102,8 @@ def get_user_age():
 
         # Retrieve predicted age from developed CNN
         cnn_age = age_prediction()
-        
-        # Retrieve predicted age from Face API
-        microsoft_age = placeholder_age_prediction()
 
-        # Use average of the predictors
-        age = (cnn_age + microsoft_age) / 2
-        
-        # Return the age as float as result
-        return(age)
+        return cnn_age
 
     except:
         # If age prediction via facial recognition fails, return error message explaining this
