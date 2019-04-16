@@ -1,7 +1,7 @@
 // Main script of the Chrome extension, is run everytime the user navigates to a new webpage
 
 // Regex of keywords to scan for
-regex = "vodka|whiskey|whisky|lager|cider|skyrim"
+regex = "vodka|whiskey|whisky|lager|cider|skyrim|morgan|beer|witcher"
 
 // Obtain current url but remove any suffix string start with a '&'
 let current_url = window.location.toString().split('&', 1)
