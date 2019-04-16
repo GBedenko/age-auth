@@ -103,6 +103,10 @@ def get_user_age():
         # Retrieve predicted age from developed CNN
         cnn_age = age_prediction()
 
+        # Log predicted age
+        with open("./experiment/age_predictions.txt", "a") as predictions:
+            predictions.write(str(cnn_age) + "\n")
+
         return cnn_age
 
     except:
