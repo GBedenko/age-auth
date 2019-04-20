@@ -68,7 +68,7 @@ def confirm_age():
     time_taken = end_time - start_time
 
     # Append time taken to log file
-    with open("./experiment/time_taken.txt", "a") as timings:
+    with open("./experiments/time_taken.txt", "a") as timings:
         timings.write(str(time_taken) + "\n")
 
     # Return the age as json

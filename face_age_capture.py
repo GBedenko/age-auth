@@ -104,7 +104,7 @@ def get_user_age():
         cnn_age = age_prediction()
 
         # Log predicted age
-        with open("./experiment/age_predictions.txt", "a") as predictions:
+        with open("./experiments/age_predictions.txt", "a") as predictions:
             predictions.write(str(cnn_age) + "\n")
 
         return cnn_age
